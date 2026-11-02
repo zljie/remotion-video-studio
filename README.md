@@ -1,12 +1,32 @@
-# Remotion Video Studio
+# Pelican Motor Club — Remotion Studio
+Original React + SVG animation. 1280×720, 30 fps, 8 seconds. No external fonts, images, or audio. Silent by design.
 
-按项目分支管理的视频工作室。`main` 仅保存项目导航与状态说明，各项目代码、素材和导出文件保存在对应分支。
+## Run
+Node.js and npm are required.
 
-## 项目分支
+1. `npm install`
+2. `npm run studio`
+3. Open http://localhost:3000
 
-- **鹈鹕骑摩托车**：计划提交至 `pelican-motorcycle`。原创 React/SVG 动画，8 秒、1280×720、30 fps、无声循环。源码与离线导出已完成，分支发布进行中。
-- **JLSH 智能月报宣传视频**：计划分支 `jlsh-monthly-report`。用于月报前端展示与专业后台配置的宣传视频，当前等待可读取且适合公开的汇报 PPT 素材，尚未制作完成。
+## Render
+`npm run render`
+`npm run still`
 
-## 管理约定
+If using system Chromium, append `--browser-executable=/usr/bin/chromium` to the render/still command.
 
-每个项目独立分支；不要将项目源码合并到 `main`。项目 README 说明运行方式、导出方式、素材来源、制作与验证状态。公开仓库不得提交账号凭据、环境配置密钥或未经确认的企业内部资料。
+Animation lives in `src/root.tsx`. Colors, geometry and timing are fully editable. Road, hills, wheels and scarf repeat every eight seconds. Head and bike gently bounce; the bird blinks.
+
+Remotion is third-party software, subject to its own license: https://www.remotion.dev/license . Check terms before commercial/team use.
+
+## Export delivered from this cloud environment
+The Remotion dependencies installed and TypeScript compilation passed. Starting Studio and Chromium rendering was blocked by this cloud execution environment (network interface / Unix socket EPERM; approved escalation failed in the environment wrapper). No live Studio deployment is claimed.
+
+The delivered MP4 uses the **same exported React SVG scene** with ReactDOMServer + resvg + FFmpeg, a browser-free alternate export. It is not a screen recording of Studio. To reproduce this alternate route:
+
+```
+node scripts/render-offline.cjs
+ffmpeg -y -framerate 30 -i out/frames/%04d.png -frames:v 240 -c:v libx264 -pix_fmt yuv420p -crf 18 -movflags +faststart out/pelican-motorcycle.mp4
+```
+Requires FFmpeg installed separately. `@resvg/resvg-js` is in devDependencies.
+
+Validation: TypeScript passed; 240-frame H.264 MP4, 1280×720, 30 fps, exactly 8 s; decoded by FFmpeg without errors. Frame 0 equals frame 240 pixel-for-pixel, confirming loop endpoint continuity. Several rendered frames inspected visually. There is no audio track.
