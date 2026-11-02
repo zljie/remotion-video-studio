@@ -13,9 +13,11 @@
 
 ### [jlsh-monthly-report：智能月报宣传视频](https://github.com/zljie/remotion-video-studio/tree/jlsh-monthly-report)
 
-- 已建立独立项目分支与素材需求说明。
-- 目标：结合汇报 PPT 展示月报前端与专业后台配置。
-- 状态：等待可读取且适合公开的 PPT/画面素材；视频尚未制作完成，未发布企业内部资料。
+- 已制作完成 84 秒、1920×1080、30 fps 的无声中文字幕产品演示，采用 10 张脱敏产品截图与轻量转场。
+- 展示后台数据接入、AI 字段草稿、宽表、模板、方案及管理员核对和样报导出；全片明确为模拟数据演示，不宣称完整生产闭环。
+- 分支已提交可复现源码、依赖锁文件、脱敏截图、字幕、分镜和[封面](https://github.com/zljie/remotion-video-studio/blob/jlsh-monthly-report/out/poster.png)。
+- 成片已单独交付；22 MB MP4 的仓库上传暂未完成，分支暂不包含视频文件，可按 README 本地渲染。
+- TypeScript、视频完整解码和画面审阅已验证。Studio 尚未在线部署；经理/员工读取及正式发布等业务边界见项目 README。
 
 ## 管理约定
 
